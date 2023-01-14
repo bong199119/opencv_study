@@ -37,7 +37,9 @@ src = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
 # normalize(src, dst, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=None, mask=None)
 dst = cv2.normalize(src, None, 0, 255, cv2.NORM_MINMAX)
 
-hist = cv2.calcHist([src], [0], None, [256], [0, 256]) # cv2.calcHist -> 0~255사이의 값의 분포를 반환함
+# 4번째 인자 : histsize는 histtogram의 bins를 나타냄 막대의 개수로 보면됨.
+# cv2.calcHist -> 0~255사이의 값의 분포를 반환함
+hist = cv2.calcHist([src], [0], None, [256], [0, 256]) 
 histImg = getGrayHistImage(hist)
 
 hist2 = cv2.calcHist([dst], [0], None, [256], [0, 256])
